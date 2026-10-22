@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "partiful": {
+      "command": "/path/to/partiful-api-mcp-server/.venv/bin/partiful-mcp",
+      "args": ["mcp"]
+    }
+  }
+}
