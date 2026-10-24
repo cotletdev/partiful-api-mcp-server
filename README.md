@@ -1,5 +1,7 @@
 # Partiful API and MCP server, self-hosted
 
+<!-- mcp-name: dev.cotlet/partiful -->
+
 A **Partiful API** and a **Partiful MCP server** you run on your own computer, in Python, on the session of your own Google Chrome. All 14 Partiful tools we run in production at [Cotlet](https://cotlet.dev/integrations/partiful-api-mcp-server): events, guest lists with questionnaire answers, the Export CSV file, check-in, Guest Approval, invites and Text Blasts.
 
 Partiful has no public API and no official MCP server. This repo gives you both:

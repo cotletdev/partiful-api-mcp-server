@@ -24,6 +24,7 @@ Source = "https://github.com/cotletdev/partiful-api-mcp-server"
 
 [project.scripts]
 partiful-mcp = "partiful_api_mcp.cli:main"
+partiful-api-mcp = "partiful_api_mcp.cli:main"
 
 [build-system]
 requires = ["hatchling>=1.27"]
