@@ -8,7 +8,7 @@ from typing import Any
 from mcp import types
 from mcp.server.lowlevel import Server
 
-from partiful_api_mcp import __version__, app
+from partiful_api_mcp import __version__, app, mcp_context
 from partiful_api_mcp.core.errors import ToolError
 from partiful_api_mcp.runner import Runner, description, tools
 
@@ -55,6 +55,7 @@ def build(runner: Runner) -> Server:
             raise RuntimeError(f"{exc.code}: {exc}") from None
         return [types.TextContent(type="text", text=json.dumps(result, ensure_ascii=False, indent=2))]
 
+    mcp_context.register(server, runner)
     return server
 
 
