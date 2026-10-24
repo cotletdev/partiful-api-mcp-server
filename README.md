@@ -18,11 +18,10 @@ It is for technical people who want to run it themselves, **for noncommercial us
 [![MCP Badge](https://lobehub.com/badge/mcp/cotletdev-partiful-api-mcp-server)](https://lobehub.com/mcp/cotletdev-partiful-api-mcp-server)
 
 ```bash
-git clone https://github.com/cotletdev/partiful-api-mcp-server.git && cd partiful-api-mcp-server
-python3 -m venv .venv && . .venv/bin/activate && pip install -e .
+uv tool install partiful-api-mcp                  # or: pip install partiful-api-mcp
 partiful-mcp connect                                  # reads your Partiful session from Chrome
 partiful-mcp call list_events
-claude mcp add partiful -- "$PWD/.venv/bin/partiful-mcp" mcp
+claude mcp add partiful -- uvx partiful-api-mcp mcp
 ```
 
 ## Contents
@@ -65,6 +64,17 @@ Partiful's sign-in token lasts an hour. The server renews it from the saved refr
 
 ## Install
 
+From [PyPI](https://pypi.org/project/partiful-api-mcp/):
+
+```bash
+uv tool install partiful-api-mcp       # or: pipx install partiful-api-mcp, or: pip install partiful-api-mcp
+partiful-mcp --version
+```
+
+MCP clients can also run it with no install: `uvx partiful-api-mcp mcp`.
+
+From source:
+
 ```bash
 git clone https://github.com/cotletdev/partiful-api-mcp-server.git
 cd partiful-api-mcp-server
@@ -78,7 +88,7 @@ With [uv](https://docs.astral.sh/uv/): `uv venv && uv pip install -e .`, then `u
 
 Setting it up with an AI agent (Claude Code, Codex, Cursor)? Open it in this folder and ask it to set up the repo: [`AGENTS.md`](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/AGENTS.md) tells it every step, and it asks you only for the steps in Chrome.
 
-To update: `git pull && pip install -e .`. We copy every change of the hosted Partiful tools into this repo.
+To update: `uv tool upgrade partiful-api-mcp` (or `pip install -U partiful-api-mcp`), from source `git pull && pip install -e .`. We copy every change of the hosted Partiful tools into this repo.
 
 ## Connect your Chrome
 
@@ -135,9 +145,9 @@ The MCP server lists every tool with its input schema, a description written for
 ### Claude Code
 
 ```bash
-claude mcp add partiful -- /path/to/partiful-api-mcp-server/.venv/bin/partiful-mcp mcp
+claude mcp add partiful -- uvx partiful-api-mcp mcp
 # read only:
-claude mcp add partiful -- /path/to/partiful-api-mcp-server/.venv/bin/partiful-mcp mcp --read-only
+claude mcp add partiful -- uvx partiful-api-mcp mcp --read-only
 ```
 
 ### Claude Desktop
@@ -148,8 +158,8 @@ claude mcp add partiful -- /path/to/partiful-api-mcp-server/.venv/bin/partiful-m
 {
   "mcpServers": {
     "partiful": {
-      "command": "/path/to/partiful-api-mcp-server/.venv/bin/partiful-mcp",
-      "args": ["mcp"]
+      "command": "uvx",
+      "args": ["partiful-api-mcp", "mcp"]
     }
   }
 }
@@ -165,8 +175,8 @@ claude mcp add partiful -- /path/to/partiful-api-mcp-server/.venv/bin/partiful-m
 
 ```toml
 [mcp_servers.partiful]
-command = "/path/to/partiful-api-mcp-server/.venv/bin/partiful-mcp"
-args = ["mcp"]
+command = "uvx"
+args = ["partiful-api-mcp", "mcp"]
 ```
 
 ### Over HTTP
