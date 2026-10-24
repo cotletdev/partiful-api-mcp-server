@@ -8,13 +8,13 @@ Partiful has no public API and no official MCP server. This repo gives you both:
 
 - **MCP server** for Claude Code, Claude Desktop, Cursor, Codex and any MCP client, over stdio or HTTP. [Setup](#mcp-server)
 - **REST API** on `http://127.0.0.1:8787/api/v1/partiful`, with OpenAPI docs at `/docs`. [Setup](#rest-api)
-- **Python**: `call("list_guests", event_id="...")`, plus 9 ready scripts in [`examples/`](examples/).
+- **Python**: `call("list_guests", event_id="...")`, plus 9 ready scripts in [`examples/`](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/examples/).
 
 It is for technical people who want to run it themselves, **for noncommercial use only** ([license](#license)). If you want it running 24/7 on a server, kept working when Partiful changes its site, for a team or a business, use the [hosted version at cotlet.dev](https://cotlet.dev/integrations/partiful-api-mcp-server).
 
 [![Partiful MCP server](https://img.shields.io/badge/Partiful%20MCP-14%20tools-6d4aef)](#all-14-tools)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-141318)](#requirements)
-[![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/license-PolyForm%20Noncommercial-141318)](LICENSE)
+[![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/license-PolyForm%20Noncommercial-141318)](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/LICENSE)
 [![MCP Badge](https://lobehub.com/badge/mcp/cotletdev-partiful-api-mcp-server)](https://lobehub.com/mcp/cotletdev-partiful-api-mcp-server)
 
 ```bash
@@ -76,7 +76,7 @@ partiful-mcp --version
 
 With [uv](https://docs.astral.sh/uv/): `uv venv && uv pip install -e .`, then `uv run partiful-mcp ...`.
 
-Setting it up with an AI agent (Claude Code, Codex, Cursor)? Open it in this folder and ask it to set up the repo: [`AGENTS.md`](AGENTS.md) tells it every step, and it asks you only for the steps in Chrome.
+Setting it up with an AI agent (Claude Code, Codex, Cursor)? Open it in this folder and ask it to set up the repo: [`AGENTS.md`](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/AGENTS.md) tells it every step, and it asks you only for the steps in Chrome.
 
 To update: `git pull && pip install -e .`. We copy every change of the hosted Partiful tools into this repo.
 
@@ -157,7 +157,7 @@ claude mcp add partiful -- /path/to/partiful-api-mcp-server/.venv/bin/partiful-m
 
 ### Cursor
 
-`~/.cursor/mcp.json`, the same block as Claude Desktop. A ready copy is in [`mcp.json`](mcp.json).
+`~/.cursor/mcp.json`, the same block as Claude Desktop. A ready copy is in [`mcp.json`](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/mcp.json).
 
 ### Codex
 
@@ -236,19 +236,19 @@ call("update_event", event_id=events[0]["event_id"], location="21 Mercer St, New
 
 Or one tool from the shell: `partiful-mcp call list_guests event_id=hK3vQ9xLm2Pa7RtYc4Wd status=pending`, or with a JSON object.
 
-Ready scripts in [`examples/`](examples/). Each prints JSON or text, takes `--out file.csv` or `--out file.json` where it makes sense, and `--help`:
+Ready scripts in [`examples/`](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/examples/). Each prints JSON or text, takes `--out file.csv` or `--out file.json` where it makes sense, and `--help`:
 
 | Script | What it does |
 |---|---|
-| [`list_events.py`](examples/list_events.py) | Events you host, with date, status and guests per RSVP status. `--when past`. |
-| [`export_guest_list.py`](examples/export_guest_list.py) | Saves the same CSV as the Export CSV button. `--status going`. |
-| [`export_rsvps.py`](examples/export_rsvps.py) | Guests of one or more events as sheet rows, one column per questionnaire question. |
-| [`questionnaire_summary.py`](examples/questionnaire_summary.py) | Each questionnaire answer with how many guests gave it and who, plus who has not answered. |
-| [`approve_pending_guests.py`](examples/approve_pending_guests.py) | Approves pending guests whose answers match `--match` keywords, up to `--max`. `--dry-run` first. |
-| [`check_in_guests.py`](examples/check_in_guests.py) | Checks guests in by name, or undoes it. |
-| [`list_past_guests.py`](examples/list_past_guests.py) | Past guests and mutuals you can invite, `--not-on` an event. |
-| [`reinvite_past_guests.py`](examples/reinvite_past_guests.py) | Copies an event to a new date and invites the people who were going. `--dry-run` first. |
-| [`text_guests.py`](examples/text_guests.py) | A Text Blast to chosen RSVP statuses, after showing how many people it reaches. |
+| [`list_events.py`](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/examples/list_events.py) | Events you host, with date, status and guests per RSVP status. `--when past`. |
+| [`export_guest_list.py`](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/examples/export_guest_list.py) | Saves the same CSV as the Export CSV button. `--status going`. |
+| [`export_rsvps.py`](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/examples/export_rsvps.py) | Guests of one or more events as sheet rows, one column per questionnaire question. |
+| [`questionnaire_summary.py`](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/examples/questionnaire_summary.py) | Each questionnaire answer with how many guests gave it and who, plus who has not answered. |
+| [`approve_pending_guests.py`](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/examples/approve_pending_guests.py) | Approves pending guests whose answers match `--match` keywords, up to `--max`. `--dry-run` first. |
+| [`check_in_guests.py`](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/examples/check_in_guests.py) | Checks guests in by name, or undoes it. |
+| [`list_past_guests.py`](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/examples/list_past_guests.py) | Past guests and mutuals you can invite, `--not-on` an event. |
+| [`reinvite_past_guests.py`](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/examples/reinvite_past_guests.py) | Copies an event to a new date and invites the people who were going. `--dry-run` first. |
+| [`text_guests.py`](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/examples/text_guests.py) | A Text Blast to chosen RSVP statuses, after showing how many people it reaches. |
 
 ```bash
 python examples/export_guest_list.py --event hK3vQ9xLm2Pa7RtYc4Wd --status going --out rsvps.csv
@@ -382,7 +382,7 @@ The source is public, the license is not an open source license: noncommercial u
 
 ## License
 
-[PolyForm Noncommercial License 1.0.0](LICENSE). In short:
+[PolyForm Noncommercial License 1.0.0](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/LICENSE). In short:
 
 - **Allowed:** noncommercial use: you, for your own personal purposes with your own Partiful account, or a charity, school, public research or government body. Changing the code, and sharing it under the same license.
 - **Not allowed:** any commercial use, your own business included; client work; selling or offering it, or a service built on it.
@@ -393,7 +393,7 @@ The source is public, the license is not an open source license: noncommercial u
   <a href="https://cotlet.dev">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="assets/logo-white.svg">
-      <img src="assets/logo.svg" alt="Cotlet" width="120">
+      <img src="https://raw.githubusercontent.com/cotletdev/partiful-api-mcp-server/main/assets/logo.svg" alt="Cotlet" width="120">
     </picture>
   </a>
 </p>
