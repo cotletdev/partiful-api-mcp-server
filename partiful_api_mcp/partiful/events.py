@@ -1,4 +1,4 @@
-"""Events and guests as the tools return them (recorded 21.10.2026, MAP.md).
+"""Events and guests as the tools return them (recorded 21.10.2026).
 
 Partiful keeps start, end and RSVP deadline in UTC with the event's IANA zone next to them; a cloned event
 has `startDate: "TBD"` until it gets a date. Guest statuses are Partiful's own, mapped to the catalog's

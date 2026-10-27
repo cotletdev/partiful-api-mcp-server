@@ -59,7 +59,7 @@ async def id_token(ctx: ToolContext) -> tuple[str, str]:
     """(uid, ID token) of the account. `AuthExpiredError` when the browser holds no usable Firebase session."""
     user = firebase_user(ctx)
     if user is None:
-        raise AuthExpiredError("The app signed this account out. Reconnect it in the console.")
+        raise AuthExpiredError("The app signed this account out. Sign in again in Chrome, then run connect.")
     uid, tokens = user["uid"], user["stsTokenManager"]
     key = (ctx.profile.browser_id, uid)
     now = time.time()
@@ -79,7 +79,7 @@ async def id_token(ctx: ToolContext) -> tuple[str, str]:
     answer = response.json()
     if response.status == 400:
         # INVALID_REFRESH_TOKEN, TOKEN_EXPIRED, USER_DISABLED, USER_NOT_FOUND: the session is over.
-        raise AuthExpiredError("The app signed this account out. Reconnect it in the console.")
+        raise AuthExpiredError("The app signed this account out. Sign in again in Chrome, then run connect.")
     if response.status != 200 or not answer.get("id_token"):
         raise ToolError("Partiful's sign-in service did not renew the session.", ErrorCode.TARGET_ERROR)
     token = answer["id_token"]
