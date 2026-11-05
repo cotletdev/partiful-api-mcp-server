@@ -1,8 +1,36 @@
-# Partiful API and MCP server, self-hosted
+# Partiful API and MCP server: connect Partiful to ChatGPT and Claude
 
 <!-- mcp-name: dev.cotlet/partiful -->
 
-A **Partiful API** and a **Partiful MCP server** you run on your own computer, in Python, on the session of your own Google Chrome. All 14 Partiful tools we run in production at [Cotlet](https://cotlet.dev/integrations/partiful-api-mcp-server): events, guest lists with questionnaire answers, the Export CSV file, check-in, Guest Approval, invites and Text Blasts.
+**Yes, ChatGPT, Claude and other AI agents can work in your Partiful account.** That includes Cursor, Codex, OpenClaw and any MCP client, plus automations in n8n, Make and Zapier. Ask in plain words, and the AI creates events, sends updates to guests, reads RSVPs and exports guest lists. It shows you what it will do first and sends nothing to other people until you say so.
+
+This repo is the missing piece: 14 Partiful tools for AI assistants and scripts.
+
+## What you can ask
+
+> *Who is going to Friday's dinner, and what dietary restrictions did they put in the questionnaire?*
+>
+> *Approve all pending guests to my launch party who answered with a company name, and list the rest for me.*
+>
+> *Copy last month's book club for November 14 at 7pm and invite the people who came.*
+>
+> *Text everyone who is Going or Maybe to my rooftop dinner that the door code is 4512.*
+
+## Two ways to get it
+
+| | [Ready to use, at Cotlet](https://cotlet.dev/integrations/partiful-api-mcp-server?utm_source=github&utm_medium=readme&utm_campaign=partiful&utm_content=two-ways) | Run it yourself, this repo |
+|---|---|---|
+| For | hosts, community organisers and event teams | developers |
+| Setup | sign in to Partiful once, about 5 minutes, nothing to install | Python and a terminal |
+| Works in | ChatGPT and Claude apps, on your phone too, Cursor, Codex, OpenClaw, any MCP client, n8n, Make, Zapier, REST API | Claude Code, Claude Desktop, Cursor, Codex on your computer |
+| Runs | 24/7, your computer can be off | while your computer is on |
+| Price | 7 days free, no card | free |
+
+**[Start free at cotlet.dev →](https://cotlet.dev/signup?app=partiful&utm_source=github&utm_medium=readme&utm_campaign=partiful&utm_content=top-button)**
+
+## Run it yourself
+
+A **Partiful API** and a **Partiful MCP server** you run on your own computer, in Python, on the session of your own Google Chrome. All 14 Partiful tools we run in production at [Cotlet](https://cotlet.dev/integrations/partiful-api-mcp-server?utm_source=github&utm_medium=readme&utm_campaign=partiful&utm_content=intro): events, guest lists with questionnaire answers, the Export CSV file, check-in, Guest Approval, invites and Text Blasts.
 
 Partiful has no public API and no official MCP server. This repo gives you both:
 
@@ -10,11 +38,11 @@ Partiful has no public API and no official MCP server. This repo gives you both:
 - **REST API** on `http://127.0.0.1:8787/api/v1/partiful`, with OpenAPI docs at `/docs`. [Setup](#rest-api)
 - **Python**: `call("list_guests", event_id="...")`, plus 9 ready scripts in [`examples/`](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/examples/).
 
-It is for technical people who want to run it themselves, **for noncommercial use only** ([license](#license)). If you want it running 24/7 on a server, kept working when Partiful changes its site, for a team or a business, use the [hosted version at cotlet.dev](https://cotlet.dev/integrations/partiful-api-mcp-server).
+Free for your own use, your own business included ([license](#license)).
 
 [![Partiful MCP server](https://img.shields.io/badge/Partiful%20MCP-14%20tools-6d4aef)](#all-14-tools)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-141318)](#requirements)
-[![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/license-PolyForm%20Noncommercial-141318)](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/LICENSE)
+[![License: Elastic 2.0](https://img.shields.io/badge/license-Elastic%202.0-141318)](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/LICENSE)
 [![MCP Badge](https://lobehub.com/badge/mcp/cotletdev-partiful-api-mcp-server)](https://lobehub.com/mcp/cotletdev-partiful-api-mcp-server)
 
 ```bash
@@ -26,6 +54,7 @@ claude mcp add partiful -- uvx partiful-api-mcp mcp
 
 ## Contents
 
+- [Questions from Partiful users](#questions-from-partiful-users)
 - [How it works](#how-it-works)
 - [Requirements](#requirements)
 - [Install](#install)
@@ -40,6 +69,44 @@ claude mcp add partiful -- uvx partiful-api-mcp mcp
 - [Self-hosted or hosted](#self-hosted-or-hosted)
 - [FAQ](#faq)
 - [License](#license)
+
+## Questions from Partiful users
+
+**Does Partiful have an API?**
+No. Partiful has no public API, no developer docs and no webhooks, and its help center documents no Zapier or Make connection. Guest data leaves Partiful only as a CSV you export by hand with the Export CSV button. This repo and [Cotlet](https://cotlet.dev/integrations/partiful-api-mcp-server?utm_source=github&utm_medium=readme&utm_campaign=partiful&utm_content=faq-api) give you 14 Partiful tools as a REST API and an MCP server.
+
+**Can I get a Partiful API key?**
+Not from Partiful for your own account. With Cotlet you get your own API key that works with your Partiful account, for scripts, n8n, Make, Zapier or any HTTP client. This repo needs no key: it runs on your computer, on your own Partiful session.
+
+**Is there an official ChatGPT integration for Partiful?**
+No. Partiful has no official ChatGPT or Claude connector. Cotlet is an unofficial one that works today, in the ChatGPT and Claude apps and in any AI agent that takes an MCP server.
+
+**How do I connect Partiful to ChatGPT?**
+Sign up at [cotlet.dev](https://cotlet.dev/signup?app=partiful&utm_source=github&utm_medium=readme&utm_campaign=partiful&utm_content=faq-chatgpt), sign in to Partiful once in your Cloud Browser there, and add Cotlet to ChatGPT, following the steps in your account. Then ask ChatGPT about your Partiful like you would ask an assistant. ChatGPT needs a server on the internet, so this repo alone, running on your computer, does not connect to ChatGPT.
+
+**Can ChatGPT create Partiful events for me?**
+Yes, with Cotlet. Describe the event, and it creates it with the time, place and description, then texts updates to guests after your OK.
+
+**Can I export my Partiful guest list?**
+Yes, with Cotlet: guests, RSVPs and answers to your questions for any event, without clicking Export CSV.
+
+**Can I automate Partiful with Zapier, Make or n8n?**
+Partiful has no Zapier or Make app. With Cotlet, n8n, Make and Zapier can create events and read RSVPs, for example into a sheet or your CRM.
+
+**Can I use it from my phone?**
+Yes, with Cotlet: once it is set up, the ChatGPT and Claude apps on your phone can use Partiful for you.
+
+**Do I need to be technical?**
+For Cotlet, no: you sign in to Partiful and add Cotlet to ChatGPT or Claude, with step-by-step instructions in your account. This repo is for people who are fine with Python and a terminal.
+
+**Is my Partiful account safe?**
+Yes. Neither Cotlet nor this repo sees or stores your Partiful password. You sign in yourself, the way you always do, and the AI works on that signed-in session. Anything that reaches other people asks for your OK first: in Cotlet by default, here through your MCP client.
+
+**Is it free?**
+This repo is free, also in your own business. Cotlet is free for 7 days with no card, then one-time credit packs from $29, no subscription. [Pricing](https://cotlet.dev/pricing?utm_source=github&utm_medium=readme&utm_campaign=partiful&utm_content=faq-price).
+
+**I manage Partiful for several accounts or clients. Does that work?**
+Yes, with Cotlet. Each Partiful login gets its own connection. Write to [contact@cotlet.dev](mailto:contact@cotlet.dev) and tell us how many accounts you manage.
 
 ## How it works
 
@@ -339,7 +406,7 @@ The REST API answers `{"error": "<code>", "message": "..."}`. The MCP server ret
 
 ## Self-hosted or hosted
 
-| | This repo | [Cotlet, hosted](https://cotlet.dev/integrations/partiful-api-mcp-server) |
+| | This repo | [Cotlet, hosted](https://cotlet.dev/integrations/partiful-api-mcp-server?utm_source=github&utm_medium=readme&utm_campaign=partiful&utm_content=compare) |
 |---|---|---|
 | Tools | the same 14 | the same 14 |
 | Runs | on your computer, while it is on | in the cloud, 24/7 |
@@ -347,15 +414,12 @@ The REST API answers `{"error": "<code>", "message": "..."}`. The MCP server ret
 | When Partiful changes its site | `git pull` once we have fixed it | fixed for you, every tool tested daily |
 | Approvals | your MCP client asks per call | invites, Text Blasts and approvals wait for your OK, switchable per tool |
 | Works with | MCP clients on your machine, local scripts | Claude.ai and ChatGPT connectors, n8n, Make, Zapier, any HTTP client |
-| Who may use it | you, for noncommercial use | teams, businesses, agencies |
+| Who may use it | you and your own business | you, teams, businesses, agencies |
 | Price | free | free 7-day trial with 2,000 credits, no card; then one-time packs from $29 for 5,000 credits |
 
 On the hosted version a successful Partiful call uses 25 credits, failed calls are free, and the Cloud Browser uses 50 credits a day while it has an app enabled for agents. [Full pricing](https://cotlet.dev/pricing).
 
 ## FAQ
-
-**Does Partiful have an official API?**
-No. Partiful has no public API, no developer docs and no webhooks, and its help center documents no Zapier or Make connection. Guest data leaves Partiful only as a CSV you export by hand with the Export CSV button. Details: [cotlet.dev/integrations/partiful-api-mcp-server](https://cotlet.dev/integrations/partiful-api-mcp-server).
 
 **Is there a Partiful MCP server for Claude, ChatGPT or Cursor?**
 Yes, this one runs on your machine: `partiful-mcp mcp` for Claude Code, Claude Desktop, Cursor and Codex. ChatGPT and Claude.ai connectors need a public HTTPS URL, which the [hosted Partiful MCP server](https://cotlet.dev/integrations/partiful-api-mcp-server) gives you.
@@ -382,20 +446,20 @@ Technically yes: connect once on a machine with Chrome and copy `session.json` t
 Requests carry Chrome's fingerprint and go out one at a time, as you would click. Nobody can promise a platform never acts. Keep to your normal use and do not blast or invite people who did not ask for it.
 
 **Can I use it at work or for my clients?**
-No, the license allows noncommercial use only. For a team, a company or client work, use [Cotlet](https://cotlet.dev) or write to [contact@cotlet.dev](mailto:contact@cotlet.dev).
+At work and in your own business, yes, free. You may not offer it to others as a hosted or managed service. For client work, use [Cotlet](https://cotlet.dev?utm_source=github&utm_medium=readme&utm_campaign=partiful&utm_content=faq-clients) or write to [contact@cotlet.dev](mailto:contact@cotlet.dev).
 
 **Is it open source?**
-The source is public, the license is not an open source license: noncommercial use only, no business use.
+The source is public under the Elastic License 2.0: free to use and change, also in your own business, but not to resell as a hosted service.
 
 **A tool broke or I need another one.**
 [Open an issue](https://github.com/cotletdev/partiful-api-mcp-server/issues) with the tool name and the error message.
 
 ## License
 
-[PolyForm Noncommercial License 1.0.0](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/LICENSE). In short:
+[Elastic License 2.0](https://github.com/cotletdev/partiful-api-mcp-server/blob/main/LICENSE). In short:
 
-- **Allowed:** noncommercial use: you, for your own personal purposes with your own Partiful account, or a charity, school, public research or government body. Changing the code, and sharing it under the same license.
-- **Not allowed:** any commercial use, your own business included; client work; selling or offering it, or a service built on it.
+- **Allowed:** using it for yourself and in your own business, free. Changing the code and sharing it under the same license.
+- **Not allowed:** offering it to others as a hosted or managed service, removing the license notices, getting around its limits.
 
 ---
 
@@ -408,4 +472,4 @@ The source is public, the license is not an open source license: noncommercial u
   </a>
 </p>
 
-Maintained by [Cotlet](https://cotlet.dev) ([@cotletdev](https://x.com/cotletdev)). Partiful is a trademark of its owner. This project is unofficial and not affiliated with, endorsed or sponsored by Partiful.
+Maintained by [Cotlet](https://cotlet.dev?utm_source=github&utm_medium=readme&utm_campaign=partiful&utm_content=footer) ([@cotletdev](https://x.com/cotletdev)). Partiful is a trademark of its owner. This project is unofficial and not affiliated with, endorsed or sponsored by Partiful.
